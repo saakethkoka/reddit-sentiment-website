@@ -1,11 +1,11 @@
-import './Dashboard.css';
+import './MentionChart.css';
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, ResponsiveContainer} from "recharts";
 import { Repository } from "../API/repository";
 
 
-class Dashboard extends Component {
+class MentionChart extends Component {
     repository = new Repository();
     state = {
         data : null,
@@ -54,5 +54,5 @@ class Dashboard extends Component {
 }
 
 
-export default Dashboard;
+export default MentionChart;
 

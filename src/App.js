@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Dashboard from "./Dashboard/Dashboard";
+import MentionChart from "./MentionChart/MentionChart";
 
 function App() {
   return (
-      <Dashboard/>
+      <MentionChart/>
   );
 }
 
