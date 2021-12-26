@@ -11,6 +11,7 @@ class MentionChart extends Component {
         data : null,
         tickerInput: "",
         uniqueUsers: 0,
+        currTicker: "",
     }
 
 
@@ -21,6 +22,7 @@ class MentionChart extends Component {
         this.repository.getMentions(ticker).then(x => {
             this.setState({data: x});
         });
+        this.setState({currTicker: ticker});
     }
 
     handleTickerInput = (event) => {
@@ -32,17 +34,20 @@ class MentionChart extends Component {
         return(
             <React.Fragment>
                 <div className='SearchBox'>
-                    <input type="text" className='form-control-sm' onChange={(e) => this.handleTickerInput(e)}/>
+                    <input type="text" className='form-control-sm' placeholder="Ticker" onChange={(e) => this.handleTickerInput(e)}/>
                     <button onClick={this.handleGraphChange} className='btn btn-primary ms-2'>Plot</button>
                 </div>
+                <div className="ChartTitle">
+                    <h3>{this.state.currTicker}</h3>
+                </div>
                 <ResponsiveContainer width="95%" height={400}>
-                    <LineChart data={this.state.data} margin={{ top: 30, right: 30, left: 20, bottom: 5 }} title="Hello">
+                    <LineChart data={this.state.data} margin={{ top: 10, right: 30, left: 20, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" />
-                        <YAxis />
+                        <YAxis/>
                         <Tooltip />
                         <Legend />
-                        <Line type="monotone" dataKey="count" stroke="#8884d8" />
+                        <Line type="monotone" dataKey="count" name={this.state.currTicker} stroke="#8884d8" />
                     </LineChart>
                 </ResponsiveContainer>
 
