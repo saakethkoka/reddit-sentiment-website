@@ -16,4 +16,15 @@ export class Repository {
                 })
         });
     }
+
+    getTopMentions(numTickers){
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/getMostMentioned`, {params: {numTickers}})
+                .then(x => resolve(x['data']))
+                .catch(err => {
+                    alert(err);
+                    reject(err);
+                })
+        });
+    }
 }
