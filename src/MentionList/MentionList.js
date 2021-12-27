@@ -14,6 +14,7 @@ class MentionList extends Component{
             this.setState({
                 top_mentions: response
             })
+            this.props.updateGraph(response[0]['ticker']);
         })
     }
 
