@@ -17,6 +17,10 @@ class MentionList extends Component{
         })
     }
 
+    handleUpdateGraph = (ticker) =>{
+        this.props.updateGraph(ticker);
+    }
+
 
     render() {
         return (
@@ -26,7 +30,9 @@ class MentionList extends Component{
                     {this.state.top_mentions.map(mention => {
                         return (
                             <React.Fragment>
-                                <button className="btn btn-outline-secondary" key={mention.ticker}>
+                                <button className="btn btn-outline-secondary"
+                                        onClick={() => this.handleUpdateGraph(mention.ticker)}
+                                        key={mention.ticker}>
                                     ${`${mention.ticker}`} {mention.numMentions}
                                 </button>
                                 <div className="divider"/>

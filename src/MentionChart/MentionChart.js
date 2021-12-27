@@ -25,8 +25,15 @@ class MentionChart extends Component {
         this.setState({currTicker: ticker});
     }
 
+    updateGraphTicker = (input) =>{
+        this.repository.getMentions(input).then(x => {
+            this.setState({data: x});
+        });
+        this.setState({currTicker: input});
+    }
+
     handleTickerInput = (event) => {
-        this.setState({tickerInput: event.target.value});
+        this.setState({tickerInput: event});
     }
 
     render() {
@@ -35,7 +42,7 @@ class MentionChart extends Component {
                 <div className="row">
                     <div className="col-md-10">
                         <div className='SearchBox'>
-                            <input type="text" className='form-control-sm' placeholder="Ticker" onChange={(e) => this.handleTickerInput(e)}/>
+                            <input type="text" className='form-control-sm' placeholder="Ticker" onChange={(e) => this.handleTickerInput(e.target.value)}/>
                             <button onClick={this.handleGraphChange} className='btn btn-primary ms-2'>Plot</button>
                         </div>
                         <div className="ChartTitle">
@@ -53,7 +60,7 @@ class MentionChart extends Component {
                         </ResponsiveContainer>
                     </div>
                     <div className="col-md-2">
-                        <MentionList/>
+                        <MentionList updateGraph={this.updateGraphTicker}/>
                     </div>
                 </div>
             </div>
