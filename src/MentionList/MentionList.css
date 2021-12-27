@@ -1,0 +1,16 @@
+.divider{
+    width:auto;
+    height:5px;
+    display:inline-block;
+}
+
+.MentionList{
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+h4{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+}
